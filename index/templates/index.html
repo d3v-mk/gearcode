@@ -1,0 +1,229 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+
+
+
+
+
+{% block 'body' %}
+<style>
+    .container{
+        max-width: 90%;
+        padding: 0 15px;
+        margin: 0 auto;
+        padding-top: 70px;
+    }
+
+    .geral-colum{
+        border: 1px solid white;
+        border-radius: 10px 10px 0 0;
+        background-color: white;
+        margin-top: 25px;
+    }
+
+    .geral-colum h2{
+        margin: 2px;
+        padding: 2px;
+        text-align: center;
+    }
+
+    .topic-geral{
+        background-color: gray;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: .2fr 2.3fr 1fr 1fr;
+        border-bottom: 1px solid white;
+        height: 100%;
+    }
+    
+    .topic-geral a{
+        color: white;
+    }
+
+    .topic-geral a:hover{
+        color: #40ec3a;
+    }
+
+    .topic-geral span{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .spngeral{
+        margin-top: 12px;
+    }
+
+    .topic-colum{
+        margin-top: 7px;
+        background-image: url(https://www.webcheats.com.br/uploads/set_resources_191/d0e70b4cbb9ab8afb1bc1065a3f8487a_subitem_stem.png);
+        background-position: 6px 40px;
+        background-repeat: no-repeat;
+    }
+
+    .topic-colum a{
+        font-size: 25px; 
+        text-decoration: none;
+    }
+
+    .sub-topic-colum a{
+        display: flex;
+        font-size: 18px;
+        margin-left: 20px;
+        margin-top: 4px;
+    }
+
+
+
+
+    .apps{
+        text-align: center;
+        background-color: red;
+    }
+
+    .gearstats{
+        margin-top: 50px;
+        padding: 10px;
+        background-color: white;
+        border-radius: 10px;
+        height: 100px;
+        display: grid;
+        grid-template-columns: 15fr 15fr;
+    }
+
+    .gearstats h3{
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+    }
+
+
+    
+
+</style>
+
+    <div class="container">
+    
+
+        <!--######## AREA GERAL ########-->
+        <div class="geral-colum">
+            <h2>Discussão Geral</h2>
+        </div><!--forum-1-->
+        <div class="topic-geral">
+            <span style="font-size: 40px;" class="material-symbols-outlined">forum</span>
+            <div class="topic-colum">
+                <a href="#">Regras da Gearcode</a>
+                <div class="sub-topic-colum">
+                    <a href="#">Regras</a>
+                </div>
+            </div>
+            <span class="spngeral">8,6k topics | 100,3k posts</span>
+            <span class="spngeral">Topic por User, 11 horas atrás.</span>
+        </div>
+
+
+        <!--######## AREA Programação e desenvolvimento ########-->
+        <div class="geral-colum">
+            <h2>Programação e desenvolvimento</h2>
+        </div><!--forum-1-->
+        <div class="topic-geral">
+            <span style="font-size: 40px;" class="material-symbols-outlined">forum</span>
+            <div class="topic-colum">
+                <a href="#">Python</a>
+                <div class="sub-topic-colum">
+                    <a href="#">Tutoriais</a>
+                    <a href="#">Regras</a>
+                    <a href="#">Regras</a>
+                </div>
+            </div>
+            <span class="spngeral">8,6k topics | 100,3k posts</span>
+            <span class="spngeral">Topic por User, 11 horas atrás.</span>
+        </div>
+        <div class="topic-geral">
+            <span style="font-size: 40px;" class="material-symbols-outlined">forum</span>
+            <div class="topic-colum">
+                <a href="#">Topico</a>
+            </div>
+            <span class="spngeral">8,6k topics | 100,3k posts</span>
+            <span class="spngeral">Topic por User, 11 horas atrás.</span>
+        </div>
+        <div class="topic-geral">
+            <span style="font-size: 40px;" class="material-symbols-outlined">forum</span>
+            <div class="topic-colum">
+                <a href="#">Topico</a>
+            </div>
+            <span class="spngeral">8,6k topics | 100,3k posts</span>
+            <span class="spngeral">Topic por User, 11 horas atrás.</span>
+        </div>
+
+
+        <!--######## AREA HTML/CSS/JAVASCRIP ########-->
+        <div class="geral-colum">
+            <h2>HTML / CSS / JAVASCRIP</h2>
+        </div><!--forum-1-->
+        <div class="topic-geral">
+            <span style="font-size: 40px;" class="material-symbols-outlined">forum</span>
+            <div class="topic-colum">
+                <a href="#">Topico</a>
+            </div>
+            <span class="spngeral">8,6k topics | 100,3k posts</span>
+            <span class="spngeral">Topic por User, 11 horas atrás.</span>
+        </div>
+        <div class="topic-geral">
+            <span style="font-size: 40px;" class="material-symbols-outlined">forum</span>
+            <div class="topic-colum">
+                <a href="#">Topico</a>
+            </div>
+            <span class="spngeral">8,6k topics | 100,3k posts</span>
+            <span class="spngeral">Topic por User, 11 horas atrás.</span>
+        </div>
+        <div class="topic-geral">
+            <span style="font-size: 40px;" class="material-symbols-outlined">forum</span>
+            <div class="topic-colum">
+                <a href="#">Topico</a>
+            </div>
+            <span class="spngeral">8,6k topics | 100,3k posts</span>
+            <span class="spngeral">Topic por User, 11 horas atrás.</span>
+        </div>
+
+
+        <!--######## AREA HTML/CSS ########-->
+        <div class="geral-colum">
+            <h2>DJANGO</h2>
+        </div><!--forum-1-->
+        <div class="topic-geral">
+            <span style="font-size: 40px;" class="material-symbols-outlined">forum</span>
+            <div class="topic-colum">
+                <a href="#">Topico</a>
+            </div>
+            <span class="spngeral">8,6k topics | 100,3k posts</span>
+            <span class="spngeral">Topic por User, 11 horas atrás.</span>
+        </div>
+        <div class="topic-geral">
+            <span style="font-size: 40px;" class="material-symbols-outlined">forum</span>
+            <div class="topic-colum">
+                <a href="#">Topico</a>
+            </div>
+            <span class="spngeral">8,6k topics | 100,3k posts</span>
+            <span class="spngeral">Topic por User, 11 horas atrás.</span>
+        </div>
+        <div class="topic-geral">
+            <span style="font-size: 40px;" class="material-symbols-outlined">forum</span>
+            <div class="topic-colum">
+                <a href="#">Topico</a>
+            </div>
+            <span class="spngeral">8,6k topics | 100,3k posts</span>
+            <span class="spngeral">Topic por User, 11 horas atrás.</span>
+        </div>
+
+        <!--############ FORUM STATS ############-->
+
+        <div class="gearstats">
+            <h3>Usuarios Online:</h3>
+            <h3>Gearcode Stats:</h3>
+        </div>
+
+    </div><!--container-->
+
+{% endblock %}
