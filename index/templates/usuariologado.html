@@ -1,0 +1,27 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+{% csrf_token %}
+
+{% block 'header' %}
+<div class="auth-header">
+    <span>Olá, User. Bem-vindo!
+</div>
+
+<div class="banner-header">
+    <img src="https://i.ibb.co/WGD1WRy/gearcode-removebg-preview-1.png" alt="Logo gearcode branca">
+    <div class="search-box">
+        <input placeholder="Procure algo"></input>
+        <span class="material-symbols-outlined">search</span>
+    </div>
+</div>
+
+<div class="menu-header">
+    <a href="http://127.0.0.1:8000/">FORUM</a>
+    <a href="#">USUARIOS</a>
+    <a href="#">EQUIPE DE MODERAÇÃO</a>
+    <a href="#">DISCORD</a>
+</div>
+{% endblock %}
+
+{% block 'body' %}
+{% endblock %}

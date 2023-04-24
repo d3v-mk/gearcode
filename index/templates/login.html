@@ -1,0 +1,78 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+
+
+{% block 'body' %}
+<style>
+form {
+  display: inline-flexbox;
+  width: 400px;
+  padding: 10px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+.formcadastro{
+    display: inline-flexbox;
+    justify-content: center;
+    background-color: gray;
+    width: 50%;
+    height: 325px;
+    margin-top: 50px;
+}
+
+.formcadastro h1{
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+</style>
+
+
+  <form class="formcadastro" action="{% url 'login' %}" method="POST"> {% csrf_token %}
+    <h1>Faça o Login <br>Não tem uma conta? <a href="/cadastro">Cadastre-se</h1></a>
+    <label for="username">Nome:</label>
+    <input type="text" id="username" name="username"><br>
+
+    <label for="senha">Senha:</label>
+    <input type="password" id="senha" name="senha"><br>
+
+    <input id="login-btn" type="submit" value="Logar">
+  </form>
+
+
+
+{% endblock %}
+
+
