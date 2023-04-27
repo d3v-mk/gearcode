@@ -2,5 +2,21 @@
 {% load static %}
 
 {% block 'body' %}
+<style>
+    .usersonline{
+        margin-top: 50px;
+        padding: 10px;
+        background-color: white;
+        height: 100px;
+        display: flex;
+        grid-template-columns: 15fr 15fr;
+        padding: 0 15px;
+        margin: 0 auto;
+        margin-top: 80px;
+        max-width: 86%;
+    }
+</style>
+
     {% include 'partials/forum/post_detail.html' %}
+
 {% endblock %}

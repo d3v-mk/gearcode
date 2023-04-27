@@ -3,6 +3,12 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.contrib import auth
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
+from .models import Profile
+
+from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 def cadastro(request):
@@ -45,3 +51,22 @@ def login(request):
 def logout_view(request):
     logout(request)
     return redirect(reverse('index'))
+
+
+@receiver(post_save, sender=User)
+def create_profile(sender, instance, created, **kwargs):
+    if created:
+        profile = Profile.objects.create(user=instance)
+        profile.save()
+        
+        user = instance  # obtem o objeto User criado
+        username = user.username  # obtem o nome de usuario do objeto User
+        
+        user_profile = Profile.objects.get(user=user)
+        user_profile.username = username  # atribui o nome de usuario ao campo username do perfil
+        user_profile.save()
+
+
+def profile(request, username):
+    profile = get_object_or_404(Profile, username=username)
+    return render(request, 'profile.html', {'profile': profile})

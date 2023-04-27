@@ -3,6 +3,17 @@ from django.urls import reverse
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from .models import Postagem
+from django.contrib.sessions.models import Session
+from django.utils import timezone
+from django.contrib.auth.models import User
+
+
+
+def post_detail(request, pk):
+    posts = get_object_or_404(Postagem, pk=pk)
+    return render(request, 'post_detail.html', {'posts': posts})
+
+
 
 
 def python(request):
@@ -28,7 +39,3 @@ def nova_postagem(request):
     else:
         return redirect(reverse('nova_postagem'))
     
-
-def post_detail(request, pk):
-    posts = get_object_or_404(Postagem, pk=pk)
-    return render(request, 'post_detail.html', {'posts': posts})

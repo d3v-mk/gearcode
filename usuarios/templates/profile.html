@@ -1,0 +1,61 @@
+<div class="container profile">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="profile-sidebar">
+        {% comment %} <!-- SIDEBAR USERPIC -->
+        <div class="profile-userpic">
+          <img src="{% static 'img/userpic.jpg' %}" class="img-responsive" alt="User Profile Picture">
+        </div>
+        <!-- END SIDEBAR USERPIC --> {% endcomment %}
+        <!-- SIDEBAR USER TITLE -->
+        <div class="profile-usertitle">
+          <div class="profile-usertitle-name">
+            {{ user.username }}
+          </div>
+          <div class="profile-usertitle-job">
+            Membro desde: {{ user.date_joined|date:"d/m/Y" }}
+          </div>
+        </div>
+        <!-- END SIDEBAR USER TITLE -->
+        <!-- SIDEBAR BUTTONS -->
+        <div class="profile-userbuttons">
+          <button type="button" class="btn btn-success btn-sm">Seguir</button>
+          <button type="button" class="btn btn-danger btn-sm">Mensagem</button>
+        </div>
+        <!-- END SIDEBAR BUTTONS -->
+        <!-- SIDEBAR MENU -->
+        <div class="profile-usermenu">
+          <ul class="nav">
+            <li class="active">
+              <a href="#">
+              <i class="glyphicon glyphicon-home"></i>
+              Visão geral </a>
+            </li>
+            <li>
+              <a href="#">
+              <i class="glyphicon glyphicon-user"></i>
+              Configurações da conta </a>
+            </li>
+            <li>
+              <a href="#">
+              <i class="glyphicon glyphicon-ok"></i>
+              Atividades e histórico </a>
+            </li>
+          </ul>
+        </div>
+        <!-- END MENU -->
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="profile-content">
+        <h2>Informações do perfil</h2>
+        <p><strong>Nome:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Data de nascimento:</strong> {{ user.profile.date_of_birth|date:"d/m/Y" }}</p>
+        <p><strong>Cidade:</strong> {{ user.profile.city }}</p>
+        <p><strong>País:</strong> {{ user.profile.country }}</p>
+        <p><strong>Descrição:</strong> {{ user.profile.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
