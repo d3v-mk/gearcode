@@ -1,0 +1,16 @@
+{% block usersonline %}
+
+        <div class="usersonline">
+            {% if users_online %}
+            <ul>
+                <h4>Usuários Online:</h4>
+                {% for user in users_online %}
+                <li style="display: inline;">{{ user.username }} |</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>Não há usuários online no momento.</p>
+            {% endif %}
+        </div>
+        
+{% endblock %}

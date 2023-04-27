@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -50,6 +51,7 @@
                 border-bottom: 1px solid white;
                 position: fixed;
                 width: 100%;
+                background-color: #111625;
             }
 
             .auth-header a{
@@ -164,12 +166,12 @@
                 <div class="caixa-logado">
                     <p>Olá {{ user.username }}! Seja Bem-Vindo.</p>
                     <a href="#">Meu Perfil</a>
-                    <a href="#">Sair</a>
+                    <a href="{% url 'logout' %}">Sair</a>
                 </div>
                 {% else %}
                 <div class="auth-header">
-                    <a href="/login">Logar</a>
-                    <a href="/cadastro">Cadastrar</a>
+                    <a href="/usuarios/login">Logar</a>
+                    <a href="/usuarios/cadastro">Cadastrar</a>
                 </div>
             {% endif %}
 
@@ -182,7 +184,7 @@
             </div>
 
             <div class="menu-header">
-                <a href="http://127.0.0.1:8000/">FORUM</a>
+                <a href="/">FORUM</a>
                 <a href="#">USUARIOS</a>
                 <a href="#">EQUIPE DE MODERAÇÃO</a>
                 <a href="#">DISCORD</a>

@@ -2,9 +2,6 @@
 {% load static %}
 
 
-
-
-
 {% block 'body' %}
 <style>
     .container{
@@ -81,19 +78,24 @@
         background-color: red;
     }
 
-    .gearstats{
+    .usersonline{
         margin-top: 50px;
         padding: 10px;
         background-color: white;
         border-radius: 10px;
         height: 100px;
-        display: grid;
+        display: flex;
         grid-template-columns: 15fr 15fr;
     }
 
-    .gearstats h3{
-        display: flex;
-        justify-content: center;
+    .usersonline ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+
+    .usersonline ul h4{
         padding: 0;
         margin: 0;
     }
@@ -135,7 +137,7 @@
         <div class="topic-geral">
             <span style="font-size: 40px;" class="material-symbols-outlined">forum</span>
             <div class="topic-colum">
-                <a href="#">Python</a>
+                <a href="forum/python">Python</a>
                 <div class="sub-topic-colum">
                     <a href="#">Fundamentos Básicos</a>
                     <a href="#">Recursos Avançados</a>
@@ -143,7 +145,7 @@
                 </div>
             </div>
             <span class="spngeral">8,6k topics | 100,3k posts</span>
-            <span class="spngeral">Topic por User, 11 horas atrás.</span>
+            <span class="spngeral">{{ postagem.titulo }} por {{ postagem.autor }}, {{ postagem.data_criacao }}</span>
         </div>
 
         <div class="topic-geral">
@@ -207,19 +209,9 @@
 
         <!--############ FORUM STATS ############-->
 
-        <div class="gearstats">
-            {% if users_online %}
-                <h2>Usuários Online:</h2>
-                <ul>
-                    {% for user in users_online %}
-                    <li>{{ user.username }}</li>
-                    {% endfor %}
-                </ul>
-                {% else %}
-                <p>Não há usuários online no momento.</p>
-            {% endif %}
-            <h3>Gearcode Stats:</h3>
-        </div>
+        {% include 'partials/forum/partials_usersonline.html' %}
+        
+
 
     </div><!--container-->
 

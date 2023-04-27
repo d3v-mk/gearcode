@@ -1,8 +1,6 @@
-{% extends 'bases/base.html' %}
 {% load static %}
 
-
-{% block 'body' %}
+{% block partialslogin %}
 <style>
 form {
   display: inline-flexbox;
@@ -61,7 +59,7 @@ input[type="submit"]:hover {
 
 
   <form class="formcadastro" action="{% url 'login' %}" method="POST"> {% csrf_token %}
-    <h1>Faça o Login <br>Não tem uma conta? <a href="/cadastro">Cadastre-se</h1></a>
+    <h1>Faça o Login <br>Não tem uma conta? <a href="/usuarios/cadastro">Cadastre-se</h1></a>
     <label for="username">Nome:</label>
     <input type="text" id="username" name="username"><br>
 
@@ -71,8 +69,4 @@ input[type="submit"]:hover {
     <input id="login-btn" type="submit" value="Logar">
   </form>
 
-
-
 {% endblock %}
-
-

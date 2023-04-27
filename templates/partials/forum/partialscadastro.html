@@ -1,8 +1,6 @@
-{% extends 'bases/base.html' %}
 {% load static %}
 
-
-{% block 'body' %}
+{% block partialscadastro %}
 <style>
 form {
   display: inline-flexbox;
@@ -60,20 +58,20 @@ input[type="submit"]:hover {
 
     <div class="formcadastro">
         <form action="{% url 'cadastro' %}" method="POST">{% csrf_token %}>
-            <h1>Cadastre-se <br>Você é um usuário registrado? <a href="/login">Entre</h1></a>
+            <h1>Cadastre-se <br>Você é um usuário registrado? <a href="/usuarios/login">Entre</h1></a>
             <label for="username">Nome:</label>
             <input type="text" id="username" name="username"><br>
 
             <label for="email">Email:</label>
             <input type="email" id="email" name="email"><br>
 
-            <label for="senha">Senha:</label>
-            <input type="password" id="senha" name="senha"><br>
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password"><br>
 
-            <label for="confirma_senha">Confirme a senha:</label>
-            <input type="password" id="confirma_senha" name="confirma_senha"><br>
+            <label for="confirmar_senha">Confirme a senha:</label>
+            <input type="password" id="confirmar_senha" name="confirmar_senha"><br>
 
             <input type="submit" value="Cadastrar">
         </form>
     </div>
-    {% endblock %}
+{% endblock %}
