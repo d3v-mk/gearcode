@@ -9,16 +9,11 @@ from django.contrib.auth.models import User
 
 
 
-def post_detail(request, pk):
-    posts = get_object_or_404(Postagem, pk=pk)
-    return render(request, 'post_detail.html', {'posts': posts})
-
-
-
-
-def python(request):
+def python_geral(request):
     return render(request, 'python.html')
 
+def python_basico(request):
+    return render(request, 'fundamentos_basicos_python.html')
 
 @login_required
 def nova_postagem(request):
@@ -39,3 +34,6 @@ def nova_postagem(request):
     else:
         return redirect(reverse('nova_postagem'))
     
+def post_detail(request, pk):
+    posts = get_object_or_404(Postagem, pk=pk)
+    return render(request, 'post_detail.html', {'posts': posts})

@@ -68,5 +68,6 @@ def create_profile(sender, instance, created, **kwargs):
 
 
 def profile(request, username):
-    profile = get_object_or_404(Profile, username=username)
+    profile = Profile.objects.get(user__username=username)
     return render(request, 'profile.html', {'profile': profile})
+

@@ -165,7 +165,7 @@
             {% if user.is_authenticated %}
                 <div class="caixa-logado">
                     <p>Olá {{ user.username }}! Seja Bem-Vindo.</p>
-                    <a href="#">Meu Perfil</a>
+                    <a href="{% url 'profile' username=user.username %}">Meu Perfil</a>
                     <a href="{% url 'logout' %}">Sair</a>
                 </div>
                 {% else %}
