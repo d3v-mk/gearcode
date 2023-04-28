@@ -1,0 +1,77 @@
+{% load static %}
+
+{% block partialscadastro %}
+<style>
+form {
+  display: inline-flexbox;
+  width: 400px;
+  padding: 10px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+.formcadastro{
+    display: flex;
+    margin-left: 350px;
+    background-color: gray;
+    width: 50%;
+    height: 500px;
+    margin-top: 50px;
+}
+
+.formcadastro h1{
+    font-size: 20px;
+}
+</style>
+
+
+    <div class="formcadastro">
+        <form action="{% url 'cadastro' %}" method="POST">{% csrf_token %}>
+            <h1>Cadastre-se <br>Você é um usuário registrado? <a href="/usuarios/login">Entre</h1></a>
+            <label for="username">Nome:</label>
+            <input type="text" id="username" name="username"><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br>
+
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password"><br>
+
+            <label for="confirmar_senha">Confirme a senha:</label>
+            <input type="password" id="confirmar_senha" name="confirmar_senha"><br>
+
+            <input type="submit" value="Cadastrar">
+        </form>
+    </div>
+{% endblock %}

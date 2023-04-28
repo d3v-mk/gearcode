@@ -1,0 +1,61 @@
+{% block usersonline %}
+<style>
+    .usersonline{
+        margin-top: 50px;
+        padding: 10px;
+        background-color: white;
+        height: 100px;
+        display: grid;
+        grid-template-columns: 15fr 15fr;
+    }
+
+    .usersonline ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+
+    .usersonline ul h4{
+        padding: 0;
+        margin: 0;
+    }
+
+    .usersonline a{
+    text-decoration: none; 
+    color: black;
+    }
+
+    .usersonline a:hover{
+    color: #40ec3a;
+    }
+
+    .stats_gear{
+        text-align: center;
+    }
+
+    .stats_gear h4{
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+        <div class="usersonline">
+            {% if users_online %}
+            <ul>
+                <h4>Usuários Online:</h4>
+                {% for user in users_online %}
+                <li style="display: inline;"><a  href="#">{{ user.username }}</li></a>,
+                {% endfor %}
+            </ul>
+            {% else %}
+            <h4 style="text-align: center; padding:0; margin:0;">Usuarios Online: <br><br>Não há usuários online no momento.</h4>
+            {% endif %}
+            <div class="stats_gear">
+                <h4>Stats Gearcode:</h4>
+                <br>
+                <h4>1,7m Tópicos | 8,5m Posts</h4>
+            </div>
+        </div>
+
+{% endblock %}

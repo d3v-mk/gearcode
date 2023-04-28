@@ -1,0 +1,38 @@
+{% load static %}
+
+
+
+{% block partials_profile %}
+<style>
+    .pagina_perfil{ 
+        text-align: center;
+        background-color: white;
+        max-width: 85%;
+        padding: 0 auto;
+        margin: 0 auto;
+    }
+
+</style>
+
+
+    <div class="pagina_perfil">
+        <h1>{{ profile.username }}</h1>
+        
+        <div class="profile-info">
+        <img src="https://via.placeholder.com/150" alt="Foto de perfil">
+        </div>
+        
+        <div class="profile-details">
+        <p>Total de Posts: x</p>
+        <p>Since: x</p>
+        <p>Ultima Visita: X</p>
+        </div>
+        
+        <div class="social-links">
+        <a href="#">Facebook</a>
+        <a href="#">Twitter</a>
+        <a href="#">LinkedIn</a>
+        </div>
+    </div><!--pagina_perfil-->
+
+{% endblock %}

@@ -1,0 +1,104 @@
+{% load static %}
+
+
+{% block content %}
+<style>
+.geral-colum{
+        border: 1px solid white;
+        border-radius: 10px 10px 0 0;
+        background-color: white;
+        margin-top: 25px;
+    }
+
+    .geral-colum h2{
+        margin: 2px;
+        padding: 2px;
+        text-align: center;
+    }
+
+
+    .topic-colum{
+        margin-top: 7px;
+        background-image: url(https://www.webcheats.com.br/uploads/set_resources_191/d0e70b4cbb9ab8afb1bc1065a3f8487a_subitem_stem.png);
+        background-position: 6px 40px;
+        background-repeat: no-repeat;
+    }
+
+    .topic-colum a{
+        font-size: 25px; 
+        text-decoration: none;
+    }
+
+    .sub-topic-colum a{
+        display: flex;
+        font-size: 18px;
+        margin-left: 20px;
+        margin-top: 4px;
+    }
+
+        .topic-geral{
+        background-color: gray;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: .2fr 2.3fr 1fr 1fr;
+        border-bottom: 1px solid white;
+        height: 100%;
+    }
+    
+    .topic-geral a{
+        color: white;
+    }
+
+    .topic-geral a:hover{
+        color: #40ec3a;
+    }
+
+    .topic-geral span{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .spngeral{
+        margin-top: 12px;
+    }
+
+</style>
+    <div class="geral-colum">
+        <h2>Gearcode - Forum</h2>
+    </div><!--forum-1-->
+    <div class="topic-geral">
+        <span style="font-size: 40px;" class="material-symbols-outlined">forum</span>
+        <div class="topic-colum">
+            <div class="sub-topic-colum">
+                <a href="#">Fundamentos Básicos</a>
+            </div>
+        </div>
+        <span class="spngeral">8,6k topics | 100,3k posts</span>
+        <span class="spngeral">Topic por User, 11 horas atrás.</span>
+    </div>
+    
+
+        <div class="topic-geral">
+        <span style="font-size: 40px;" class="material-symbols-outlined">forum</span>
+        <div class="topic-colum">
+            <div class="sub-topic-colum">
+                <a href="#">Recursos Avançados</a>
+            </div>
+        </div>
+        <span class="spngeral">8,6k topics | 100,3k posts</span>
+        <span class="spngeral">Topic por User, 11 horas atrás.</span>
+    </div>
+
+
+        <div class="topic-geral">
+        <span style="font-size: 40px;" class="material-symbols-outlined">forum</span>
+        <div class="topic-colum">
+            <div class="sub-topic-colum">
+                <a href="#">Duvidas</a>
+            </div>
+        </div>
+        <span class="spngeral">8,6k topics | 100,3k posts</span>
+        <span class="spngeral">Topic por User, 11 horas atrás.</span>
+    </div>
+{% endblock %}
