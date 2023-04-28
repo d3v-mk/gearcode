@@ -1,0 +1,137 @@
+{% load static %}
+
+
+{% block partials_area_detail %}
+<style>
+    .container{
+        max-width: 90%;
+        padding: 0 15px;
+        margin: 0 auto;
+        padding-top: 70px;
+    }
+
+    .geral-colum{
+        border: 1px solid white;
+        border-radius: 10px 10px 0 0;
+        background-color: white;
+        margin-top: 25px;
+    }
+
+    .geral-colum h2{
+        margin: 2px;
+        padding: 2px;
+        text-align: center;
+    }
+
+    .topic-geral{
+        background-color: gray;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: .2fr 2.3fr 1fr 1fr;
+        border-bottom: 1px solid white;
+        height: 100%;
+    }
+    
+    .topic-geral a{
+        color: white;
+    }
+
+    .topic-geral a:hover{
+        color: #40ec3a;
+    }
+
+    .topic-geral span{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .spngeral{
+        margin-top: 12px;
+    }
+
+    .topic-colum{
+        margin-top: 7px;
+        background-image: url(https://www.webcheats.com.br/uploads/set_resources_191/d0e70b4cbb9ab8afb1bc1065a3f8487a_subitem_stem.png);
+        background-position: 6px 40px;
+        background-repeat: no-repeat;
+    }
+
+    .topic-colum a{
+        font-size: 25px; 
+        text-decoration: none;
+    }
+
+    .sub-topic-colum a{
+        display: flex;
+        font-size: 18px;
+        margin-left: 20px;
+        margin-top: 4px;
+    }
+
+
+
+
+    .apps{
+        text-align: center;
+        background-color: red;
+    }
+
+
+</style>
+
+
+<div class="container">
+
+
+
+    <div class="subforum_area">
+        <div class="geral-colum">
+            <h2>{{ titulo }}</h2>
+        </div>
+
+        <div class="topic-geral">
+            <span style="font-size: 40px;" class="material-symbols-outlined">forum</span>
+            <div class="topic-colum">
+                <a href="{% url 'index' %}">{{ titulo_link_area }}</a>
+            </div>
+            <span class="spngeral">{{ postagens.count }} tópicos | {{ postagens|length }} posts</span>
+            {% if postagens %}
+                <span  class="spngeral">{{ postagens.last.titulo }} por {{ postagens.last.autor.username }}, {{ postagens.last.created_at }}</span>
+            {% else %}
+                <span class="spngeral">Não há tópicos nesta área.</span>
+            {% endif %}
+        </div>
+
+
+        <div class="topic-geral">
+            <span style="font-size: 40px;" class="material-symbols-outlined">forum</span>
+            <div class="topic-colum">
+                <a href="#">{{ area.description }}</a>
+            </div>
+            <span class="spngeral">{{ postagens.count }} tópicos | {{ postagens|length }} posts</span>
+            {% if postagens %}
+                <span  class="spngeral">{{ postagens.last.titulo }} por {{ postagens.last.autor.username }}, {{ postagens.last.created_at }}</span>
+            {% else %}
+                <span class="spngeral">Não há tópicos nesta área.</span>
+            {% endif %}
+        </div>
+
+        <div class="topic-geral">
+            <span style="font-size: 40px;" class="material-symbols-outlined">forum</span>
+            <div class="topic-colum">
+                <a href="#">{{ area.description }}</a>
+            </div>
+            <span class="spngeral">{{ postagens.count }} tópicos | {{ postagens|length }} posts</span>
+            {% if postagens %}
+                <span  class="spngeral">{{ postagens.last.titulo }} por {{ postagens.last.autor.username }}, {{ postagens.last.created_at }}</span>
+            {% else %}
+                <span class="spngeral">Não há tópicos nesta área.</span>
+            {% endif %}
+        </div>
+
+
+    </div><!--subforum_area-->
+</div><!--container-->
+
+{% endblock %}

@@ -118,13 +118,16 @@ input[type="submit"]:hover {
 
 
 
-<form method="POST">{% csrf_token %}
-  <label for="titulo">Título do tópico:</label>
-  <input type="text" id="titulo" name="titulo" required>
-
-  <label for="conteudo">Corpo da postagem:</label>
-  <textarea id="conteudo" name="conteudo" required></textarea>
-
-  <input type="submit" value="Publicar">
+<h1>Nova postagem em {{ area.name }}</h1>
+<form method="post" action="{% url 'nova_postagem' area.slug %}">
+    {% csrf_token %}
+    <label for="titulo">Título:</label>
+    <input type="text" name="titulo" id="titulo"><br><br>
+    <label for="conteudo">Conteúdo:</label>
+    <textarea name="conteudo" id="conteudo"></textarea><br><br>
+    <input type="submit" value="Enviar">
 </form>
+
+
+
 {% endblock %}

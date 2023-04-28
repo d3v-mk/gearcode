@@ -1,0 +1,12 @@
+{% load static %}
+
+{% block partials_criar_area %}
+  <h1>Criar Nova Área</h1>
+  <form method="POST">
+    {% csrf_token %}
+    <input placeholder="URL (ex:/forum/sua_area/)" type="text" id="nome" name="nome"><br>
+    <input placeholder="Titulo do cabeçalho da area" type="text" id="title" name="title"></input><br>
+    <input placeholder="Nome da area linkado (ex: Dúvidas)" id="descricao" name="descricao"></input><br>
+    <button type="submit">Criar Área</button>
+  </form>
+{% endblock %}
