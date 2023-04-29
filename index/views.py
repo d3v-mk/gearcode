@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.sessions.models import Session
 from django.contrib.auth.models import User
 from django.utils import timezone
+from forum.models import Postagem
 
 
 def index(request):
@@ -16,7 +17,11 @@ def index(request):
 
     # Recupera os objetos de usuário com base nos IDs de usuário
     users_online = User.objects.filter(id__in=user_id_list)
+
+
+    postagem = Postagem.objects.get(pk=1)
     context = {
-        'users_online': users_online
+        'users_online': users_online,
+        'postagem': postagem,
     }
     return render(request, 'index.html', context)

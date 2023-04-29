@@ -3,13 +3,12 @@ from django.contrib.auth.models import User
 from django.utils.text import slugify
 
 class Area(models.Model):
-    title = models.TextField(max_length=100, default='')
-    name = models.CharField(max_length=100)
-    description = models.TextField()
+    nome = models.CharField(max_length=100)
+    descricao = models.TextField()
     slug = models.SlugField(unique=True)
     
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        self.slug = slugify(self.nome)
         super(Area, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -23,7 +22,12 @@ class Postagem(models.Model):
     num_respostas = models.IntegerField(default=0)
     num_visualizacoes = models.IntegerField(default=0)
     area = models.ForeignKey(Area, on_delete=models.CASCADE)
+    slug = models.SlugField(unique=True, default='postagem-sem-titulo')
 
     def __str__(self):
         return self.titulo
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.titulo)
+        super(Postagem, self).save(*args, **kwargs)
     

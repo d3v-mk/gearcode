@@ -163,16 +163,16 @@
     <header>
         {% block 'header' %}
             {% if user.is_authenticated %}
-                <div class="caixa-logado">
-                    <p>Olá {{ user.username }}! Seja Bem-Vindo.</p>
-                    <a href="{% url 'profile' username=user.username %}">Meu Perfil</a>
-                    <a href="{% url 'logout' %}">Sair</a>
+            <div class="caixa-logado">
+                <p>Olá {{ user.username }}! Seja Bem-Vindo.</p>
+                <a href="{% url 'profile' username=user.username %}">Meu Perfil</a>
+                <a href="{% url 'logout' %}">Sair</a>
                 </div>
-                {% else %}
-                <div class="auth-header">
-                    <a href="/usuarios/login">Logar</a>
-                    <a href="/usuarios/cadastro">Cadastrar</a>
-                </div>
+            {% else %}
+            <div class="auth-header">
+                <a href="/usuarios/login">Logar</a>
+                <a href="/usuarios/cadastro">Cadastrar</a>
+            </div>
             {% endif %}
 
             <div class="banner-header">
