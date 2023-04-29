@@ -1,7 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User, Group
 
 
-from django.contrib.auth.models import User
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -9,3 +9,4 @@ class Profile(models.Model):
     bio = models.CharField(max_length=500, blank=True)
     website = models.URLField(max_length=200, blank=True)
     location = models.CharField(max_length=100, blank=True)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE, default="2")

@@ -6,6 +6,7 @@ from .models import Area, Postagem
 from django.utils.text import slugify
 from django.template.loader import render_to_string
 from django.http import HttpResponse
+from django.contrib.auth.models import Group
 
 
 def area_detail(request, area_slug):
@@ -80,6 +81,13 @@ def novo_topico(request, area_slug):
 
 def post_detail(request, area_slug, post_slug):
     posts = get_object_or_404(Postagem, slug=post_slug)
-    return render(request, 'post_detail.html', {'posts': posts})
+    owner_group = Group.objects.get(user=posts.autor)
+
+    context = {
+        'owner_group': owner_group,
+        'posts': posts,
+    }
+    
+    return render(request, 'post_detail.html', context)
 
 

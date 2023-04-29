@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 
+
+
 class Area(models.Model):
     nome = models.CharField(max_length=100)
     descricao = models.TextField()
@@ -14,11 +16,14 @@ class Area(models.Model):
     def __str__(self):
         return self.name
 
+
+
+
 class Postagem(models.Model):
+    autor = models.ForeignKey(User, on_delete=models.CASCADE)
     titulo = models.CharField(max_length=200)
     conteudo = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    autor = models.ForeignKey(User, on_delete=models.CASCADE)
     num_respostas = models.IntegerField(default=0)
     num_visualizacoes = models.IntegerField(default=0)
     area = models.ForeignKey(Area, on_delete=models.CASCADE)
@@ -30,4 +35,5 @@ class Postagem(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.titulo)
         super(Postagem, self).save(*args, **kwargs)
+
     

@@ -19,7 +19,7 @@
         <h4 style="text-align: center;">{{ posts.autor }}</h4>
         <img src="#">imagem autor</img>
         <h5 style="text-align: center;">Registrado desde: <br>{{ posts.autor.date_joined|date:"d/m/Y"}}</h5>
-        <h5 style="text-align: center;">MEMBRO</h5>
+        <h5 style="text-align: center;">{{ owner_group.name }}</h5>
     </div>
 
     <div style="display: flex; margin: 0 auto; padding: 0 auto;">
