@@ -80,10 +80,7 @@
 
 
 </style>
-
     <div class="container">
-    
-
         <!--######## AREA GERAL ########-->
         <div class="geral-colum">
             <h2>Anúncios</h2>
@@ -115,13 +112,13 @@
             <div class="topic-colum">
                 <a href="forum/area_python">Python</a>
                 <div class="sub-topic-colum">
-                    <a href="forum/fundamentos_basicos_python/">Fundamentos Básicos</a>
+                    <a href="forum/fundamentos-basicos-python/">Fundamentos Básicos</a>
                     <a href="#">Recursos Avançados</a>
                     <a href="#">Dúvidas</a>
                 </div>
             </div>
-            <span class="spngeral">8,6k topics | 100,3k posts</span>
-            <span class="spngeral">{{ postagem.titulo }} por {{ postagem.autor }}, {{ postagem.data_criacao }}</span>
+            <span class="spngeral">{{ area.count }} topics | 100,3k posts</span>
+            <span class="spngeral">{{ postagem.titulo }} por {{ postagem.autor }} <br>{{ postagem.created_at|date:"d \d\e F, Y - H:i" }}</span>
         </div>
 
         <div class="topic-geral">
@@ -188,7 +185,5 @@
         {% include 'partials/forum/partials_usersonline.html' %}
         
 
-
     </div><!--container-->
-
 {% endblock %}

@@ -1,0 +1,90 @@
+{% load static %}
+
+
+{% block partials_area_detail %}
+<style>
+    .container{
+        max-width: 90%;
+        padding: 0 15px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: .1fr 4fr 1fr 1fr;
+        background-color: gray;
+    }
+
+    .geral-colum{
+        max-width: 90%;
+        padding: 0 14px;
+        margin: 0 auto;
+        margin-top: 120px;
+        border: 1px solid white;
+        border-radius: 10px 10px 0 0;
+        background-color: white;
+    }
+
+    .geral-colum h2{
+        margin: 2px;
+        padding: 2px;
+        text-align: center;
+    }
+
+    .topic-colum {
+        background-color: gray;
+    }
+
+    .topic-colum li{
+        margin: 10px;
+        list-style: none;
+    }
+
+    .topic-colum li a{
+        text-decoration: none;
+    }
+
+    .topic-stats h5{
+        padding: 0;
+        margin: 0;
+    }
+
+    .material-symbols-outlined{
+        display: flex; 
+        align-items: center;
+    }
+
+    .link_nick_user{
+        
+    }
+
+    .link_post_user{
+        font-size: 25px;
+    }
+
+</style>
+
+<div class="geral-colum">
+    <h2>Fundamentos Basicos Python</h2>
+</div>
+<div class="container">
+
+
+{% for postagem in postagens %}
+            <span class="material-symbols-outlined">local_fire_department</span>
+            <div class="topic-colum">
+                <li>
+                    <a class="link_post_user" href="{{ postagem.slug }}">{{ postagem.titulo }}</a>
+                    <br>
+                    por <a class="link_nick_user" href="{% url 'profile' postagem.autor.username %}">{{ postagem.autor }}</a>, {{ postagem.created_at|date:'d/m/Y - H:i' }}
+                </li>  
+            </div>
+            <div class="topic-stats">
+                <h5>19 respostas <br>25 visualizações</h5>
+            </div>
+            <div class="topic-stats-user">
+                <img src="#"></img><a href="#">USER</a>
+                <br>
+                <span>Abril 10</span>
+            </div>
+{% endfor %}
+</div><!--container-->
+
+{% endblock %}

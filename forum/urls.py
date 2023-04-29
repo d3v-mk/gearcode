@@ -4,8 +4,7 @@ from usuarios.views import logout_view
 
 
 urlpatterns = [
-    path('criar_area/', views.criar_area, name='criar_area'),
-    path('/', views.area_detail, name='area_detail'),
-    path('<slug:area_slug>/<int:pk>/', views.post_detail, name='post_detail'),
-    path('nova_postagem/', views.nova_postagem, name='nova_postagem'),
+    path('<str:area_slug>/', views.area_detail, name='area_detail'),
+    path('<str:area_slug>/novo_topico/', views.novo_topico, name='novo_topico'),
+    path('<str:area_slug>/<str:post_slug>/', views.post_detail, name='post_detail'),
 ]
