@@ -6,6 +6,7 @@ from .models import Area, Postagem
 from django.utils.text import slugify
 from django.template.loader import render_to_string
 from django.http import HttpResponse
+from django.contrib.auth.models import Group
 
 
 def area_detail(request, area_slug):
@@ -71,7 +72,17 @@ def novo_topico(request, area_slug):
             return redirect(reverse('area_detail', kwargs={'area_slug': area_slug}))
     return redirect(reverse('area_detail', kwargs={'area_slug': area_slug}))
 
+
+
+
+def delete_topico(request, post_slug, area_slug):
+    topic = get_object_or_404(Postagem, slug=post_slug)
+    topic.delete()
+    return redirect(reverse('area_detail', args=[area_slug]))
+
     
+
+
 
 
 
@@ -80,6 +91,12 @@ def novo_topico(request, area_slug):
 
 def post_detail(request, area_slug, post_slug):
     posts = get_object_or_404(Postagem, slug=post_slug)
-    return render(request, 'post_detail.html', {'posts': posts})
+    user = request.user
+    group_name = user.groups.first().name if user.groups.exists() else None
+    context = {
+        'group_name': group_name,
+        'posts': posts,
+    }
+    return render(request, 'post_detail.html', context)
 
 

@@ -3,10 +3,11 @@
     .usersonline{
         margin-top: 50px;
         padding: 10px;
-        background-color: white;
+        background-color: #1a1b1c;
         height: 100px;
         display: grid;
         grid-template-columns: 15fr 15fr;
+        border-radius: 10px 10px 10px 10px;
     }
 
     .usersonline ul{
@@ -14,6 +15,7 @@
         padding: 0;
         margin: 0;
         text-align: center;
+        display: inline;
     }
 
     .usersonline ul h4{
@@ -23,11 +25,6 @@
 
     .usersonline a{
     text-decoration: none; 
-    color: black;
-    }
-
-    .usersonline a:hover{
-    color: #40ec3a;
     }
 
     .stats_gear{
@@ -38,24 +35,31 @@
         margin: 0;
         padding: 0;
     }
+    
 </style>
 
-        <div class="usersonline">
-            {% if users_online %}
-            <ul>
-                <h4>Usuários Online:</h4>
-                {% for user in users_online %}
-                <li style="display: inline;"><a  href="#">{{ user.username }}</li></a>,
-                {% endfor %}
-            </ul>
+<div class="usersonline">
+    {% if users_online %}
+    <ul>
+        <h4 style="color: #d5d1d5;">Usuários Online:</h4>
+        {% for user in users_online %}
+            {% if user.groups.first.name == '• Administrador •' %}
+                <a class="user_admin" href="#">• {{ user.username }} •</a>,
+            {% elif user.groups.first.name == 'Membro Junior' %}
+                <a class="user_membro_junior" href="#">{{ user.username }}</a>,
             {% else %}
-            <h4 style="text-align: center; padding:0; margin:0;">Usuarios Online: <br><br>Não há usuários online no momento.</h4>
+                <a href="#">{{ user.username }}</a>,
             {% endif %}
-            <div class="stats_gear">
-                <h4>Stats Gearcode:</h4>
-                <br>
-                <h4>1,7m Tópicos | 8,5m Posts</h4>
-            </div>
-        </div>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <h4 style="text-align: center; padding:0; margin:0;">Usuarios Online: <br><br>Não há usuários online no momento.</h4>
+    {% endif %}
+    <div class="stats_gear">
+        <h4>Stats Gearcode:</h4>
+        <br>
+        <h4>1,7m Tópicos | 8,5m Posts</h4>
+    </div>
+</div>
 
 {% endblock %}

@@ -5,7 +5,7 @@ from django.contrib import auth
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from .models import Profile
-
+from django.contrib.auth.models import Group
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -29,7 +29,12 @@ def cadastro(request):
             return redirect(reverse('cadastro'))   
         
         user = User.objects.create_user(username=username, email=email, password=senha)
+
+        # Adiciona o usuário ao grupo 'membros'
+        membros = Group.objects.get(name='• Membro Junior •')
+        membros.user_set.add(user)
         user.save()
+
         return redirect(reverse('login'))
     
 

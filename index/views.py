@@ -19,9 +19,7 @@ def index(request):
     users_online = User.objects.filter(id__in=user_id_list)
 
 
-    postagem = Postagem.objects.get(pk=1)
     context = {
         'users_online': users_online,
-        'postagem': postagem,
     }
     return render(request, 'index.html', context)
