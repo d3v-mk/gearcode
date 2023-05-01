@@ -106,6 +106,142 @@
         font-size: 25px;
     }
 
+    .user_container_profile{
+        background-color: #1a1b1c;
+        width: 88%;
+        display: flex;
+        margin: 0 auto;
+        padding: 0 auto;
+        margin-top: 60px;
+        display: grid;
+        grid-template-columns: 3fr 5fr 0fr 0fr;
+    }
+
+    .user_seguidores {  
+        
+    }
+
+    .user_seguidores h3{
+        background-color: #b81515;
+        display: flex;
+        width: 90%;
+        padding: 1px;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px 6px 0px 0px;
+        color: white;   
+        margin-top: 15px;
+    }
+
+    .user_followers_img{
+        display: block;
+        float: none;
+        justify-content: center;
+        margin: 0 auto;
+        width: 90%;
+        text-align: center;
+        align-items: center;
+        background-color: #151515;
+    }
+
+
+    .user_followers_img img{
+        border-radius: 50%;
+        margin: 5px;
+    }
+
+    .bigcontainer_conquistas{
+        background-color: #b81515;
+        display: flex;
+        width: 90%;
+        padding: 1px;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px 6px 0px 0px;
+        color: white;   
+        margin-top: 15px;
+    }
+
+    .bigcontainer_reputação{
+        width: 90%;
+        padding: 0;
+        margin: 0 auto;
+        background-color: #151515;
+        display: flex;
+    }
+
+    .bigcontainer_reputação h4{
+        padding: 0;
+        margin: 0 auto;
+        text-align: center;
+        color: white;
+    }
+
+    .bigcontainer_fluxer_menu{
+        background-color: #b81515;
+        display: flex;
+        width: 90%;
+        padding: 1px;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: space-around;
+        border-radius: 6px 6px 0px 0px;
+        color: white;
+        margin-top: 15px;
+        list-style: none;
+        
+    }
+
+    .bigcontainer_fluxer_menu li{
+        width: 100%;
+        text-align: center;
+        padding: 1px;
+        margin: 0;
+        font-size: 20px;
+        border-radius: 6px 6px 6px 6px;
+        cursor: pointer;
+    }
+
+    .bigcontainer_fluxer_menu li:hover{
+        background-color: black;
+    }
+
+    .bigcontainer_fluxer{
+        background-color: #161616;
+        width: 90%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .bigcontainer_user_fluxer{
+    }
+
+    .bigcontainer_user_fluxer h4{
+        padding: 0;
+        margin: 0;
+        color: white;
+    }
+    
+    #bigcontainer_reply_topic{
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+
+    #bigcontainer_reply_user_topic{
+        padding: 10px;
+        padding-top: 0;
+        border-bottom: 1px solid white;
+    }
+
+
+
+
+
+
+
+
 
     {% comment %} RESPONSIVE {% endcomment %}
     @media only screen and (max-width: 1115px) {
@@ -156,5 +292,75 @@
             <a href="#">Mensagem</a>
         </div>
     </div>
+
+    <div class="user_container_profile">
+
+        
+
+        <div class="user_seguidores">
+            <h3>Sobre USER</h3>
+                <section class="user_followers_img">
+                    <h1>sodkoas</h1>
+                </section>
+
+                <h3>Seguidores</h3>
+                <section class="user_followers_img">
+                    <img id="user_followers_img" src="https://via.placeholder.com/45x45" alt="Foto de perfil">
+                    <img id="user_followers_img" src="https://via.placeholder.com/45x45" alt="Foto de perfil">
+                    <img id="user_followers_img" src="https://via.placeholder.com/45x45" alt="Foto de perfil">
+                    <img id="user_followers_img" src="https://via.placeholder.com/45x45" alt="Foto de perfil">
+                    <img id="user_followers_img" src="https://via.placeholder.com/45x45" alt="Foto de perfil">
+                    <img id="user_followers_img" src="https://via.placeholder.com/45x45" alt="Foto de perfil">
+                    <img id="user_followers_img" src="https://via.placeholder.com/45x45" alt="Foto de perfil">
+                    <img id="user_followers_img" src="https://via.placeholder.com/45x45" alt="Foto de perfil">
+                    <img id="user_followers_img" src="https://via.placeholder.com/45x45" alt="Foto de perfil">
+                    <img id="user_followers_img" src="https://via.placeholder.com/45x45" alt="Foto de perfil">
+                    <img id="user_followers_img" src="https://via.placeholder.com/45x45" alt="Foto de perfil">
+                    <img id="user_followers_img" src="https://via.placeholder.com/45x45" alt="Foto de perfil">
+
+                </section>
+        </div><!--user_seguidores-->
+        
+        
+        
+        
+        <div class="user_bigcontainer_profile">
+            <div class="user_bigcontainer_conquistas">
+                <h3 class="bigcontainer_conquistas">Conquistas de USER</h3>
+                <div class="bigcontainer_reputação">
+                    <h4>reputação<br>800</h4>
+                    <h4>Medalhas<br>800</h4>
+                </div>
+            </div>
+            
+            <div class="user_bigcontainer_fluxer">
+                <ul class="bigcontainer_fluxer_menu">
+                    <li>Atividades</li>
+                    <li>Trofeus e Medalhas</li>
+                </ul>
+                <div class="bigcontainer_fluxer">
+                    <div class="bigcontainer_user_fluxer">
+                        <h4 id="bigcontainer_reply_topic">TOPICO</h4>
+                        <h4 id="bigcontainer_reply_user_topic">USER respondeu ao Tópico de USER em AREA</h4>
+                    </div>
+                    <div class="bigcontainer_user_fluxer">
+                        <h4 id="bigcontainer_reply_topic">TOPICO</h4>
+                        <h4 id="bigcontainer_reply_user_topic">USER respondeu ao Tópico de USER em AREA</h4>
+                    </div>
+                    <div class="bigcontainer_user_fluxer">
+                        <h4 id="bigcontainer_reply_topic">TOPICO</h4>
+                        <h4 id="bigcontainer_reply_user_topic">USER respondeu ao Tópico de USER em AREA</h4>
+                    </div>
+                    <div class="bigcontainer_user_fluxer">
+                        <h4 id="bigcontainer_reply_topic">TOPICO</h4>
+                        <h4 id="bigcontainer_reply_user_topic">USER respondeu ao Tópico de USER em AREA</h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div><!--user_container_profile-->
 
 {% endblock %}
