@@ -72,7 +72,17 @@ def novo_topico(request, area_slug):
             return redirect(reverse('area_detail', kwargs={'area_slug': area_slug}))
     return redirect(reverse('area_detail', kwargs={'area_slug': area_slug}))
 
+
+
+
+def delete_topico(request, post_slug, area_slug):
+    topic = get_object_or_404(Postagem, slug=post_slug)
+    topic.delete()
+    return redirect(reverse('area_detail', args=[area_slug]))
+
     
+
+
 
 
 
@@ -81,13 +91,12 @@ def novo_topico(request, area_slug):
 
 def post_detail(request, area_slug, post_slug):
     posts = get_object_or_404(Postagem, slug=post_slug)
-    owner_group = Group.objects.get(user=posts.autor)
-
+    user = request.user
+    group_name = user.groups.first().name if user.groups.exists() else None
     context = {
-        'owner_group': owner_group,
+        'group_name': group_name,
         'posts': posts,
     }
-    
     return render(request, 'post_detail.html', context)
 
 

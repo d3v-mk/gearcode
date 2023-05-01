@@ -4,35 +4,157 @@
 
 {% block partials_profile %}
 <style>
-    .pagina_perfil{ 
+    .user_banner_profile{ 
         text-align: center;
         background-color: white;
-        max-width: 85%;
+        width: 88%;
+        height: 200px;
         padding: 0 auto;
         margin: 0 auto;
+        margin-top: 100px;
+        display: flex;
     }
 
+    #user_banner_imagem{
+        border-radius: 50%;
+        border: 1px solid black;
+        position: relative;
+        top: 125px;
+        left: 30px;
+        width: 123px;
+        height: 123px;
+    }
+
+
+    .user_info_banner_profile{
+        background-color: #1a1b1c;
+        width: 88%;
+        height: 67px;
+        padding: 0 auto;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .user_info_banner_profile ul{
+        margin: 0;
+        list-style: none;
+        width: 60%;
+
+    }
+
+    .user_info_banner_profile ul li{
+        display: flex;
+        position: relative;
+        left: 120px;
+
+
+    }
+
+
+    .user_info_banner_profile ul li h4{
+        padding: 10px;
+        margin: 0;
+        color: white;
+        font-size: 12px;
+        position: relative;
+        bottom: 0px;
+        text-align: center;
+    }
+
+    .interactbuttons{
+        position: absolute;
+        left: 1000px;
+    }
+
+    .interactbuttons a{
+        background-color: red;
+        text-decoration: none;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        margin-left: 40px;
+    }
+
+    .cargo_administrador {
+        text-align: center;
+        text-shadow: 1px 1px 5px #000;
+        color: red;
+        margin: 0;
+        margin-bottom: 20px;
+        background-color: rgba(000, 000, 000, .5);
+    }
+    
+    .cargo_membro_junior{
+        text-align: center;
+        text-shadow: 1px 1px 5px #000;
+        color: black;
+        margin: 0;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    .user_username_banner_profile{
+        position: relative;
+        top: 125px;
+        left: 60px;
+    }
+
+    .user_username_banner_profile h4{
+        margin: 0;
+        padding: 0;
+        font-size: 25px;
+    }
+
+
+    {% comment %} RESPONSIVE {% endcomment %}
+    @media only screen and (max-width: 1115px) {
+
+    .interactbuttons{
+        left: 750px;
+    }
+}
+    
 </style>
 
 
-    <div class="pagina_perfil">
-        <h1>{{ profile.username }}</h1>
-        
-        <div class="profile-info">
-        <img src="https://via.placeholder.com/150" alt="Foto de perfil">
+
+
+
+
+
+
+
+
+
+
+
+    <div class="user_banner_profile">
+        <img id="user_banner_imagem" src="https://via.placeholder.com/123x123" alt="Foto de perfil">
+
+        <div class="user_username_banner_profile">
+            {% if profile.user.groups.first.name == '• Administrador •' %}
+                <h4 style="background: none;" class="user_admin"> {{ profile.user.username }}</h4>
+                <h4 class="cargo_administrador">{{ profile.user.groups.first.name }}</h4>
+            {% elif profile.user.groups.first.name == '• Membro Junior •' %}
+                <h4 class="user_membro_junior">{{ profile.user.username }}</h4>
+                <h4 class="cargo_membro_junior">{{ profile.user.groups.first.name }}</h4>
+            {% endif %}
         </div>
-        
-        <div class="profile-details">
-        <p>Total de Posts: x</p>
-        <p>Since: x</p>
-        <p>Ultima Visita: X</p>
+    </div>
+
+    <div class="user_info_banner_profile">
+        <ul>
+            <li>
+                <h4>TOTAL DE POSTS <br><span>800</span></h4><hr style="margin: 0;">
+                <h4>REGISTRO <br><span>14 Janeiro, 2023</span></h4><hr style="margin: 0;">
+                <h4>ULTIMO LOGIN <br><span>38 minutos atrás</span></h4><hr style="margin: 0;">
+            </li>
+        </ul>
+        <div class="interactbuttons">
+            <a href="#">Seguir</a>
+            <a href="#">Mensagem</a>
         </div>
-        
-        <div class="social-links">
-        <a href="#">Facebook</a>
-        <a href="#">Twitter</a>
-        <a href="#">LinkedIn</a>
-        </div>
-    </div><!--pagina_perfil-->
+    </div>
 
 {% endblock %}

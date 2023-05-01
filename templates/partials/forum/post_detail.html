@@ -3,27 +3,165 @@
 {% block post_detail %}
 <style>
     .containerpost{
-        display: flex;
-        background-color: white;
+        display: grid;
+        grid-template-columns: 1fr 5fr 0fr 0fr;
+        background-color: #1a1b1c;
         max-width: 85%;
         padding: 0 15px;
         margin: 0 auto;
-        margin-top: 80px;
     }
+
+    .topico_conteudo{
+        white-space: pre-wrap;
+        margin-left: 20px;
+        color: #c3c7c3;
+    }
+
+    .data_since{
+        padding: 0;
+        margin: 0;
+        margin-top: 20px;
+        margin-bottom: 5px;
+        color: #c3c7c3;
+    }
+
+    .img_user{  
+        margin-left: 10px;
+    }
+
+    .cargo_administrador {
+        text-align: center;
+        text-shadow: 1px 1px 5px #000;
+        color: red;
+        margin: 0;
+        margin-bottom: 20px;
+        padding: 0;
+        background: url(https://cdn.discordapp.com/attachments/543468827657109506/620681770786095118/adm.gif) repeat;
+    }
+
+    .cargo_membro_junior{
+        text-align: center;
+        text-shadow: 1px 1px 5px #000;
+        color: black;
+        margin: 0;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    .username-admin {
+        color: red;
+        text-align: center;
+        border: 1px solid black;
+        margin: 0;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-shadow: 1px 1px 5px #000;
+    }
+
+    .username-membro-junior{
+        color: black;
+        text-align: center;
+        border: 1px solid black;
+        margin: 0;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+
+    .container-btn-admin{
+        display: flex;
+        margin-top: 120px; 
+        margin-bottom: 20px; 
+        justify-content: right;
+        width: 93%;
+        padding: 7px;
+    }
+
+    .container-btn-admin form{
+        background-color: #c90a00;
+        padding: 10px;
+        color: white;
+        margin-left: 10px;
+    }
+
+    .container-btn-admin form:hover{
+        background-color: white;
+        color: black;
+        cursor: pointer;
+        transition: .3s;
+    }
+
+    .container-btn-admin a{
+        background-color: #c90a00;
+        padding: 10px;
+        margin-left: 10px;
+        text-decoration: none;
+        color: white;
+    }
+
+    .container-btn-admin a:hover{
+        background-color: white;
+        color: black;
+        transition: .3s;
+    }
+    
+    .container-btn-geral{
+        margin-top: 120px; 
+        margin-bottom: 20px; 
+        justify-content: right;
+    }
+
 
 </style>
 
 
-<div class="containerpost">
-    <div style="display: inline;">
-        <h4 style="text-align: center;">{{ posts.autor }}</h4>
-        <img src="#">imagem autor</img>
-        <h5 style="text-align: center;">Registrado desde: <br>{{ posts.autor.date_joined|date:"d/m/Y"}}</h5>
-        <h5 style="text-align: center;">{{ owner_group.name }}</h5>
-    </div>
 
-    <div style="display: flex; margin: 0 auto; padding: 0 auto;">
-        <h4>{{ posts.conteudo }}</h4>
+
+{% if user.groups.first.name == '• Administrador •' %}
+    <div class="container-btn-admin">
+            <a href="delete">Excluir Tópico</a>
+            <form method="POST">Trancar Tópico</form>
+            <form method="POST">Mover para Lixeira</form>
+            <a href="#">Responder</a>
+    </div><!--container-btn-admin-->
+{% else %}
+    <div class="container-btn-geral">
+            <a href="#">Responder</a>
+        </div>
+    </div><!--container-btn-geral-->
+{% endif %}
+
+
+
+<div class="containerpost">
+
+    <div class="info_autor">
+
+        {% if posts.autor.groups.first.name == '• Administrador •' %}
+            <h4 class="username-admin">{{ posts.autor.username }}</h4>
+        {% elif posts.autor.groups.first.name == '• Membro Junior •' %}
+            <h4 class="username-membro-junior">{{ posts.autor.username }}</h4>
+        {% else %}
+            <h4>{{ posts.autor.username }}</h4>
+        {% endif %}
+        
+        <img class="img_user" src="https://via.placeholder.com/170x300" alt="Foto de perfil">
+
+
+        <h5 class="data_since" style="text-align: center;">{{ posts.autor.date_joined|date:"d M, Y"}}</h5>
+
+        {% if posts.autor.groups.first.name == '• Administrador •' %}
+            <h5 class="cargo_administrador">{{ posts.autor.groups.first.name }}</h5>
+        {% elif posts.autor.groups.first.name == '• Membro Junior •'%}
+            <h5 class="cargo_membro_junior">{{ posts.autor.groups.first.name }}</h5>
+        {% else %}
+            <h5>{{ posts.autor.groups.first.name }}</h5>
+        {% endif %}
+
+    </div><!--info_autor-->
+
+    <div class="topico_conteudo">
+        <span>{{ posts.conteudo }}</span>
     </div>
 </div>
 

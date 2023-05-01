@@ -15,32 +15,39 @@
             body{
                 padding: 0;
                 margin: 0;
-                background-color: #111625;  
+                background-color: #0f0f0f;  
                 font-family: Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             }
 
 
             {% comment %} ############ HEADER ############ {% endcomment %}
+            .span_bemVindo{
+                padding: 15px;
+            }
+            
+            #btn-sair{
+                
+            }
+
+
             .caixa-logado{
                 display: flex;
                 width: 100%;
-                justify-content: space-evenly;
-                border-bottom: 1px solid white;
                 color: white;
                 align-items: center;
                 position: fixed;
-                background-color: #111625;
+                background-color: #1a1b1c;
+                border-bottom: 1px solid #b81515;
+                margin-top: 0 auto;
+                justify-content: space-around;
             }
 
             .caixa-logado a{
                 text-decoration: none;
-                color: white;
-                padding: 15px;
+                padding: 0px;
             }
 
             .caixa-logado a:hover{
-                background-color: white;
-                color: black;
                 text-decoration: none;
 
             }
@@ -48,10 +55,26 @@
             .auth-header {
                 display: flex;
                 justify-content: space-around;
-                border-bottom: 1px solid white;
+                border-bottom: 1px solid #b81515;
                 position: fixed;
+                background-color: #1a1b1c;
+
+            }
+
+            #x{
                 width: 100%;
-                background-color: #111625;
+                text-align: center;
+                text-decoration: none;
+                font-size: 30px;
+                color: #c3c7c3;
+                text-shadow: 2px 2px 5px black;
+                padding: 6px;
+            }
+
+            #x:hover{
+                background-color: #b81515;
+                color: #c3c7c3;
+                transition: .7s;
             }
 
             .auth-header a{
@@ -59,12 +82,15 @@
                 text-align: center;
                 text-decoration: none;
                 font-size: 30px;
-                color: #40ec3a;
+                color: #c3c7c3;
+                text-shadow: 2px 2px 5px black;
+                padding: 6px;
+                margin-top: 6px;
             }
 
             .auth-header a:hover{
-                background-color: white;
-                color: black;
+                background-color: #b81515;
+                color: #c3c7c3;
                 transition: .7s;
             }
 
@@ -81,9 +107,7 @@
             }
 
             .menu-header{
-                padding: 0;
-                border-bottom: 1px solid white;
-                border-top: 1px solid white;
+                background-color: #b81515;
                 justify-content: space-around;
                 display: flex;
             }
@@ -91,15 +115,16 @@
             .menu-header a{
                 text-decoration: none;
                 font-size: 20px;
-                color: #40ec3a;
-                padding: 3px;
+                color: white;  
                 width: 100%;
                 text-align: center;
+                padding: 15px;
+                text-shadow: 2px 2px 5px black;
             }
             
             .menu-header a:hover{
-                background-color: white;
-                color: black;
+                background-color: #0f0f0f;
+                color: white;
                 transition: .7s;
             }
 
@@ -122,6 +147,22 @@
                 color: black;
                 transition: .7s;
             }
+            
+            {% comment %} STYLE DOS NICKS DE CARGOS {% endcomment %}
+            
+            .user_admin{
+                color: red;
+                text-align: center;
+                text-shadow: 1px 1px 5px #000;
+                font-weight: bold;
+                background: url(https://cdn.discordapp.com/attachments/543468827657109506/620681770786095118/adm.gif) repeat;
+            }
+
+            .user_membro_junior{
+                color: black;
+            }
+
+
 
             {% comment %} ############ FOOTER ############ {% endcomment %}
 
@@ -131,7 +172,7 @@
 
 
             .divfooter{
-                background-color: black;
+                background-color: #1a1b1c;
                 color: white;
                 padding: 35px;
                 display: flex;
@@ -151,6 +192,11 @@
                 font-size: 20px;
             }
 
+            .material-symbols-outlined#iconpolitica {
+                font-size: 20px;
+                margin-left: 65%;
+            }
+
             .footercontato{
                 margin-left: 20px;
             }
@@ -162,17 +208,21 @@
     
     <header>
         {% block 'header' %}
-            {% if user.is_authenticated %}
-            <div class="caixa-logado">
-                <p>Olá {{ user.username }}! Seja Bem-Vindo.</p>
-                <a href="{% url 'profile' username=user.username %}">Meu Perfil</a>
-                <a href="{% url 'logout' %}">Sair</a>
+            {% if user %}
+                <div class="caixa-logado">
+                    {% if user.groups.first.name == '• Administrador •' %}
+                        <span class="span_bemVindo">Olá <a class="user_admin" href="#">• {{ user.username }} •</a> seja bem-vindo!</span>
+                        <a href="{% url 'profile' username=user.username %}">Meu Perfil</a>
+                        <a id="btn-sair" href="{% url 'logout' %}">Sair</a>
+                    {% elif user.groups.first.name == '• Membro Junior •' %}
+                        <span class="span_bemVindo">Olá <a class="user_membro_junior" href="#">{{ user.username }}</a> seja bem-vindo!</span>
+                        <a href="{% url 'profile' username=user.username %}">Meu Perfil</a>
+                        <a id="btn-sair" href="{% url 'logout' %}">Sair</a>
+                    {% else %}
+                        <a id="x"href="/usuarios/login">Logar</a>
+                        <a id="x" style="border-left: 1px solid #b81515;" href="/usuarios/cadastro">Cadastrar</a>
+                    {% endif %}
                 </div>
-            {% else %}
-            <div class="auth-header">
-                <a href="/usuarios/login">Logar</a>
-                <a href="/usuarios/cadastro">Cadastrar</a>
-            </div>
             {% endif %}
 
             <div class="banner-header">
@@ -207,7 +257,7 @@
                     <a href="#">Contato</a>
                 </div>
             </div>
-                <span style="margin-left: 65%;" class="material-symbols-outlined">shield_person</span>
+                <span id="iconpolitica" class="material-symbols-outlined">shield_person</span>
                 <a href="#">Politica de privacidade</a>
         </div><!--footer-->
     {% endblock %}

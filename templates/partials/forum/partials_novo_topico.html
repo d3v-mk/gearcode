@@ -7,10 +7,19 @@
   form {
     width: 70%;
     margin: 0 auto;
-    background-color: #f8f8f8;
+    background-color: #1a1b1c;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .tituloarea{
+    max-width: 98%;
+  }
+
+  .textarea{
+    height: 200px;
+    width: 98%;
   }
 
   label {
@@ -82,14 +91,13 @@
   <h1>Publicar Novo Tópico em: <br>{{ area.descricao }}</h1>
   <form method="post" action="{% url 'novo_topico' area.slug %}">
       {% csrf_token %}
-      <label for="titulo">Título:</label>
-      <input type="text" name="titulo" id="titulo"><br><br>
-      <label for="conteudo">Conteúdo:</label>
-      <textarea name="conteudo" id="conteudo"></textarea><br><br>
+      <label for="titulo" style="color: red; font-size: 10px;">obrigatorio</label>
+      <input class="tituloarea" type="text" name="titulo" id="titulo" placeholder="Titulo do Tópico"><br><br>
+      <label for="titulo" style="color: red; font-size: 10px;">obrigatorio</label>
+      <textarea class="textarea" name="conteudo" id="conteudo"></textarea><br><br>
       <input type="submit" value="Enviar">
   </form>
 </div>
-
 
 
 {% endblock %}

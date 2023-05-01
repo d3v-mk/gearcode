@@ -5,31 +5,31 @@
 <style>
     .container{
         max-width: 90%;
-        padding: 0 15px;
+        padding: 0 auto;
         margin: 0 auto;
         display: grid;
         grid-template-columns: .1fr 4fr 1fr 1fr;
-        background-color: gray;
+        background-color: #1a1b1c;
     }
 
     .geral-colum{
-        max-width: 90%;
-        padding: 0 14px;
+        width: 90%;
+        padding: 0 auto;
         margin: 0 auto;
-        margin-top: 120px;
-        border: 1px solid white;
-        border-radius: 10px 10px 0 0;
-        background-color: white;
+        background: rgb(184,21,21);
+        background: radial-gradient(circle, rgba(184,21,21,1) 0%, rgba(27,27,27,1) 100%);
+        text-shadow: 2px 2px 5px black;
+        color: #c3c7c3;
     }
 
     .geral-colum h2{
-        margin: 2px;
-        padding: 2px;
+        margin: 0px;
+        padding: 6px;
         text-align: center;
     }
 
     .topic-colum {
-        background-color: gray;
+        background-color: #1a1b1c;
     }
 
     .topic-colum li{
@@ -57,15 +57,75 @@
 
     .link_post_user{
         font-size: 25px;
+        color: #c3c7c3;
     }
 
+    .link_post_user:hover{
+        color: #b81515;
+    }
+
+    .btn_novotopico{
+        margin-top: 120px; 
+        margin-bottom: 20px; 
+        text-align: right;
+        width: 90%;
+    }
+
+    .btn_novotopico a{
+        background-color: #36802d;
+        color: white;
+        padding: 10px;
+        padding-left: 30px;
+        padding-right: 30px;
+        text-decoration: none;
+        border-radius: 5px;
+        box-shadow: 0px 0px 1px 1px white;
+    }
+
+    .btn_novotopico a:hover{
+        background-color: white;
+        color: black;
+        transition: .5s;
+    }
+
+    #span_porUser_dataPost{
+        color: #c3c7c3;
+    }
+
+    #span_dataPost{
+        color: white;
+        font-size: 11px;
+    }
+
+    #span_horaPost{
+        font-size: 11px;
+        color: white;
+    }
+
+    .nick_autor_admin{
+        color: red;
+        background: url(https://cdn.discordapp.com/attachments/543468827657109506/620681770786095118/adm.gif) repeat;
+        text-shadow: 1px 1px 5px #000;
+        font-height: bold;
+    }
 </style>
+
+
+
+
+
+
+
+<div class="btn_novotopico">
+    <a href="novo_topico">Postar Novo Tópico</a>
+</div>
 
 <div class="geral-colum">
     <h2>Fundamentos Basicos Python</h2>
 </div>
-<div class="container">
 
+
+<div class="container">
 
 {% for postagem in postagens %}
             <span class="material-symbols-outlined">local_fire_department</span>
@@ -73,7 +133,23 @@
                 <li>
                     <a class="link_post_user" href="{{ postagem.slug }}">{{ postagem.titulo }}</a>
                     <br>
-                    por <a class="link_nick_user" href="{% url 'profile' postagem.autor.username %}">{{ postagem.autor }}</a>, {{ postagem.created_at|date:'d/m/Y - H:i' }}
+                    <span id="span_porUser_dataPost">por</span>
+
+
+                        {% if postagem.autor.groups.first.name == '• Administrador •' %}
+                            <a class="nick_autor_admin" href="{% url 'profile' postagem.autor.username %}">• {{ postagem.autor }} •</a>
+                        {% elif postagem.autor.groups.first.name == 'Membro Junior' %}
+                            <a class="link_nick_user" href="{% url 'profile' postagem.autor.username %}">{{ postagem.autor }}</a>
+                        {% else %}
+                            <a href="{% url 'profile' postagem.autor.username %}">{{ postagem.autor }}</a>,
+                        {% endif %}
+
+
+
+                    <span id="span_dataPost">
+                    <br>
+                    {{ postagem.created_at|date:'d M Y' }}</span>
+                    <span id="span_horaPost">às {{ postagem.created_at|date:'H:i' }}</span>
                 </li>  
             </div>
             <div class="topic-stats">
@@ -85,6 +161,19 @@
                 <span>Abril 10</span>
             </div>
 {% endfor %}
+
 </div><!--container-->
+
+
+
+
+
+
+
+<script>
+    function novoTopico() {
+        window.location.href = window.location.href + 'novo_topico';
+    }
+</script>
 
 {% endblock %}
