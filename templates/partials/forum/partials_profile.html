@@ -87,8 +87,7 @@
     
     .cargo_membro_junior{
         text-align: center;
-        text-shadow: 1px 1px 5px #000;
-        color: black;
+        color: gray;
         margin: 0;
         margin-bottom: 20px;
         padding: 0;
@@ -119,6 +118,21 @@
 
     .user_seguidores {  
         
+    }
+    .user_groups_img{
+        display: block;
+        float: none;
+        justify-content: center;
+        margin: 0 auto;
+        width: 90%;
+        text-align: center;
+        align-items: center;
+        background-color: #151515;
+    }
+
+    .user_groups_img img{
+        margin: 10px;
+        border-radius: 10px;
     }
 
     .user_seguidores h3{
@@ -241,8 +255,6 @@
 
 
 
-
-
     {% comment %} RESPONSIVE {% endcomment %}
     @media only screen and (max-width: 1115px) {
 
@@ -299,8 +311,16 @@
 
         <div class="user_seguidores">
             <h3>Sobre USER</h3>
-                <section class="user_followers_img">
-                    <h1>sodkoas</h1>
+                <section class="user_groups_img">
+                    {% if profile.user.groups.first %}
+                        {% if profile.user.groups.first.name == '• Administrador •' %}
+                        <img src="https://i.ibb.co/3yPcQzv/ADMINISTRADOR-1.png"></img>
+                        {% elif profile.user.groups.first.name == '• Membro Junior •' %}
+                        <img src="https://i.ibb.co/q1pbSkd/membro-junior.png"></img>
+                        {% elif profile.user.groups.first.name == '• Hacker •' %}
+                        <img src="https://i.ibb.co/QXBmKBJ/hacker.png"></img>
+                        {% endif %}
+                    {% endif %}
                 </section>
 
                 <h3>Seguidores</h3>

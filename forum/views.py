@@ -55,6 +55,7 @@ def novo_topico(request, area_slug):
         titulo = request.POST.get('titulo')
         conteudo = request.POST.get('conteudo')
 
+
         postagem = Postagem(
             titulo=titulo,
             conteudo=conteudo,

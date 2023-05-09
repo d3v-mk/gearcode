@@ -73,6 +73,16 @@ def create_profile(sender, instance, created, **kwargs):
 
 
 def profile(request, username):
-    profile = Profile.objects.get(user__username=username)
-    return render(request, 'profile.html', {'profile': profile})
+    profile = get_object_or_404(Profile, user__username=username)
+    user_group = None
+    
+    if request.user.is_authenticated:
+        # obtém o grupo do usuário logado
+        user_group = request.user.groups.first()
+
+    return render(request, 'profile.html', {
+        'profile': profile,
+        'user_group': user_group,
+    })
+
 

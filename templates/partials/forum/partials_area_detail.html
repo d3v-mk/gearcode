@@ -46,14 +46,14 @@
         margin: 0;
     }
 
-    .material-symbols-outlined{
+    #iconFire{
         display: flex; 
         align-items: center;
+        color: red;
+        margin-left: 10px;
+        cursor: default;
     }
 
-    .link_nick_user{
-        
-    }
 
     .link_post_user{
         font-size: 25px;
@@ -108,6 +108,12 @@
         text-shadow: 1px 1px 5px #000;
         font-height: bold;
     }
+
+    .nick_autor_membro_junior{
+        color: gray;
+        text-shadow: 1px 1px 5px #000;
+        font-height: bold;
+    }
 </style>
 
 
@@ -128,7 +134,7 @@
 <div class="container">
 
 {% for postagem in postagens %}
-            <span class="material-symbols-outlined">local_fire_department</span>
+            <span title="NOVO" id="iconFire" class="material-symbols-outlined">local_fire_department</span>
             <div class="topic-colum">
                 <li>
                     <a class="link_post_user" href="{{ postagem.slug }}">{{ postagem.titulo }}</a>
@@ -138,8 +144,8 @@
 
                         {% if postagem.autor.groups.first.name == '• Administrador •' %}
                             <a class="nick_autor_admin" href="{% url 'profile' postagem.autor.username %}">• {{ postagem.autor }} •</a>
-                        {% elif postagem.autor.groups.first.name == 'Membro Junior' %}
-                            <a class="link_nick_user" href="{% url 'profile' postagem.autor.username %}">{{ postagem.autor }}</a>
+                        {% elif postagem.autor.groups.first.name == '• Membro Junior •' %}
+                            <a class="nick_autor_membro_junior" href="{% url 'profile' postagem.autor.username %}">{{ postagem.autor }}</a>
                         {% else %}
                             <a href="{% url 'profile' postagem.autor.username %}">{{ postagem.autor }}</a>,
                         {% endif %}
@@ -153,7 +159,7 @@
                 </li>  
             </div>
             <div class="topic-stats">
-                <h5>19 respostas <br>25 visualizações</h5>
+                <h5>19 respostas <br>{{ postagem.num_respostas }} visualizações</h5>
             </div>
             <div class="topic-stats-user">
                 <img src="#"></img><a href="#">USER</a>

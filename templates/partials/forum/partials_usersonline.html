@@ -35,7 +35,7 @@
         margin: 0;
         padding: 0;
     }
-    
+
 </style>
 
 <div class="usersonline">
@@ -45,7 +45,7 @@
         {% for user in users_online %}
             {% if user.groups.first.name == '• Administrador •' %}
                 <a class="user_admin" href="#">• {{ user.username }} •</a>,
-            {% elif user.groups.first.name == 'Membro Junior' %}
+            {% elif user.groups.first.name == '• Membro Junior •' %}
                 <a class="user_membro_junior" href="#">{{ user.username }}</a>,
             {% else %}
                 <a href="#">{{ user.username }}</a>,
